@@ -82,7 +82,7 @@ const data = [
           hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
           hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
 
-    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+      thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
@@ -112,3 +112,80 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+let articles = document.querySelector(".articles");
+  function artcleCreator(title,date,stp1,stp2,stp3){
+  // let articles=document.querySelector('.articles')
+
+     let article=document.createElement('div')
+     let h2c = document.createElement("h2");
+     let p1c = document.createElement("p");
+     let span1 = document.createElement("p");
+     let span2 = document.createElement("p");
+     let span3 = document.createElement("p");
+     let button = document.createElement('span');
+
+         article.appendChild(h2c);
+         article.appendChild(p1c);
+         article.appendChild(span1)
+          article.appendChild(span2);
+         article.appendChild(span3);
+         article.append(button);
+
+
+        article.classList.add('article')
+        p1c.classList.add("date");
+        button.classList.add("expandButton");
+        //  span1.classList.add("expandButton");
+        // span2.classList.add("expandButton");
+        // span3.classList.add("expandButton");
+
+
+          h2c.textContent=title
+          p1c.textContent = date;
+          span1.textContent = stp1;
+          span2.textContent = stp2;
+          span3.textContent = stp3;
+          button.textContent="Click Hear For Articles"
+
+// button.addEventListener("click", e => {
+//   console.log("button clicked", e.target);
+  
+//   button.classList.toggle("article-open");
+ 
+// });
+
+// return article;
+  
+
+      button.addEventListener('click', (e) => {
+          article.classList.toggle("article-open");
+      });
+      
+   return article
+  }
+
+  //  articles.appendChild(
+  //    artcleCreator(
+  //      "testing",
+  //      "We are testing the panel",
+  //      "testing",
+  //      "We are testing the panel",
+  //      "gooooooooo"
+  //    )
+  //  );
+
+data.forEach(data => {
+  articles.appendChild(artcleCreator(data.title, data.date,data.firstParagraph,
+    data.secondParagraph,data.thirdParagraph));
+});
+
+const newArt=artcleCreator(
+  "Cofee news",
+  "09/09/2019",
+  "Let’s say you have an animation that lasts two seconds. A 50% would mean the one-second mark while 75% would mean the one-and-a-half-second mark. If your animation lasts four seconds, 50% would mean the two-second mark, while 75% would mean the three-second ",
+  "Let’s say you have an animation that lasts two seconds. A 50% would mean the one-second mark while 75% would mean the one-and-a-half-second mark. If your animation lasts four seconds, 50% would mean the two-second mark, while 75% would mean the three-second",
+  "Let’s say you have an animation that lasts two seconds. A 50% would mean the one-second mark while 75% would mean the one-and-a-half-second mark. If your animation lasts four seconds, 50% would mean the two-second mark, while 75% would mean the three-second"
+);
+articles.appendChild(newArt)
